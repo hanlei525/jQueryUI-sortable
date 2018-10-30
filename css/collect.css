@@ -1,0 +1,138 @@
+.layui-row-add ul {
+    list-style-type: none;
+    margin: 0;
+    float: left;
+    margin-right: 10px;
+    background: #eee;
+    padding: 5px;
+    /*width: 143px;*/
+    margin-top: 20px;
+}
+
+ul li {
+    margin: 5px;
+    padding: 5px;
+    font-size: 1.2em;
+    width: 120px;
+}
+
+.layui-field-title {
+    margin-top: 30px;
+}
+
+.grid-demo {
+    margin: 10px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #79C48C;
+    color: #fff;
+}
+
+.grid-demo-bg1 {
+    background-color: #63BA79;
+}
+
+.grid-demo-bg2 {
+    background-color: #49A761;
+}
+
+.grid-demo-bg3 {
+    background-color: #38814A;
+}
+
+.layui-container {
+    height: 600px;
+    width: 100%;
+    /*background: #5261cc;*/
+}
+
+.layui-row-add {
+    width: 50%;
+    height: 100%;
+    max-height: 600px;
+    /*background: #70ccc5;*/
+    float: left;
+    /*overflow-y: scroll;*/
+}
+
+.grid-demo-add {
+    /*background: #b5cc65;*/
+}
+
+.layui-row .grid-demo-addto {
+    height: 48px;
+}
+
+.layui-container {
+    margin: 0;
+}
+
+.layui-form .layui-input-block-addto {
+    margin-left: 0;
+    margin-bottom: 15px;
+}
+
+.layui-label-add {
+    width: 100%;
+    margin-bottom: 10px;
+    float: left;
+}
+
+.ui-state-default {
+    text-align: center;
+    font-size: 14px !important;
+    float: left;
+}
+
+.dropfalse {
+    min-height: 50px;
+    /*min-width: 550px;*/
+    width: 80%;
+    position: relative;
+}
+
+.right-condition {
+    float: left;
+    width: 100%;
+    height: 40px;
+}
+
+.right-condition-add {
+    height: 90px;
+}
+
+#rightsort1, #rightsort2, #rightsort3, #rightsort4 {
+    background: #fff;
+}
+
+.layui-row {
+    width: 50%;
+}
+
+.del-button {
+    float: right;
+    background: red;
+    width: 20px;
+    height: 20px;
+    border: 0;
+    border-radius: 50%;
+    position: relative;
+    margin-top: 15px;
+}
+
+.del-button div {
+    width: 10px;
+    height: 3px;
+    background: #fff;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.layernum {
+    position: absolute;
+    top: -20px;
+}

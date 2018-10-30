@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>layui-moveDiv</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/collect.css">
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="layui/layui.js"></script>
+    <script src="js/jquery-ui.js"></script>
+
+</head>
+<body>
+<div class="layui-container">
+    <div class="layui-row layui-row-add" id="leftbox">
+        <div class="layui-col-xs12 addArea">
+            <ul id="leftsort1" class="dropfalse ui-sortable">
+                <div class="layernum">第1层列表</div>
+                <div class="del-button">
+                    <div></div>
+                </div>
+            </ul>
+        </div>
+    </div>
+    <div class="layui-row layui-row-add">
+        <form class="layui-form" action="">
+            <div class="layui-input-block layui-input-block-addto">
+                <div class="layui-label-add">条件</div>
+                <ul id="rightsort1" class="droptrue" style="width: auto;height: auto;min-height: 80px;">
+                    <li class="ui-state-default" data-value="1">1</li>
+                    <li class="ui-state-default" data-value="2">2</li>
+                    <li class="ui-state-default" data-value="3">3</li>
+                    <li class="ui-state-default" data-value="4">4</li>
+                    <li class="ui-state-default" data-value="5">5</li>
+                    <li class="ui-state-default" data-value="6">6</li>
+                    <li class="ui-state-default" data-value="7">7</li>
+                </ul>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+
+    $(".droptrue").sortable({
+        connectWith: ".dropfalse",
+        revert: true,
+    });
+    $(".dropfalse").sortable({
+        connectWith: ".dropfalse",
+        revert: true,
+        items: "li:not(.ui-state-disabled)",
+        cancel: ".ui-state-disabled",
+        update: function (event, ui) {
+            changes();
+        }
+    });
+    //重新排序
+    function numCheck() {
+        var num = $("#leftbox .dropfalse").length;     //获取tr的长度
+        for (var i = 0; i <= num; i++) {         //进行循环
+            $("#leftbox .dropfalse .layernum").eq(i).html("第" + [i + 1] + "层列表");
+        }
+    }
+    //新元素移入区域触发事件
+    var i = 1;
+    var temp = [];
+    function changes() {
+        var len = $(".layui-col-xs12").length + 1;
+        $("#leftbox").append("<div class=\"layui-col-xs12 addArea\">\n" +
+            "            <ul id=\"leftsort" + len + "\" class=\"dropfalse\">\n" +
+            "                <div class=\"layernum\">第" + len + "层列表</div>\n" +
+            "                <div class=\"del-button\" id=\"del-button" + len + "\"><div></div></div>\n" +
+            "            </ul>\n" +
+            "        </div>");
+        //新增
+        numCheck();
+        function each() {
+            $("#leftbox .addArea").each(function () {
+                if ($(this).find("li").length) {
+                    var value = $(this).find("li").data("value");
+                    temp.push(value);
+                    i++;
+                }
+            });
+            temp = []
+        }
+        each();
+
+        var length = $("#leftbox .dropfalse").length;
+        var j = 1;
+        $("#leftbox .dropfalse").each(function () {
+            if (j < length) {
+                $(this).sortable("disable");
+            } else {
+                $(this).sortable({
+                    connectWith: ".dropfalse",
+                    revert: true,
+                    items: "li:not(.ui-state-disabled)",
+                    cancel: ".ui-state-disabled",
+                    update: function (event, ui) {
+                        changes();
+                    }
+                });
+            }
+            j++;
+        })
+    }
+    //点击删除事件
+    $("#leftbox").on("click", ".del-button", function () {
+        var text = $(this).parent().find("li").text();
+        var value = $(this).parent().find("li").attr("data-value");
+        if (value == 1 || value == 2) {
+            $("#rightsort1").append("<li class='ui-state-default'  data-value=" + value + ">" + text + "</li>")
+        } else {
+            if (value == 3 || value == 4 || value == 5 || value == 6) {
+                $("#rightsort2").append("<li class='ui-state-default'  data-value=" + value + ">" + text + "</li>")
+            } else {
+                if (value == 7 || value == 8 || value == 9 || value == 10) {
+                    $("#rightsort3").append("<li class='ui-state-default'  data-value=" + value + ">" + text + "</li>")
+                } else {
+                    if (value == 11 || value == 12) {
+                        $("#rightsort4").append("<li class='ui-state-default'  data-value=" + value + ">" + text + "</li>")
+                    } else {
+                        return false;
+                    }
+                }
+            }
+        }
+        $(this).parent().remove();
+        function each() {
+            $("#leftbox .addArea").each(function () {
+                if ($(this).find("li").length) {
+                    var value = $(this).find("li").data("value");
+                    temp.push(value);
+                    i++;
+                }
+            });
+            console.log(temp);
+            temp = []
+        }
+        each();
+        numCheck()
+    })
+
+</script>
+</body>
+</html>
